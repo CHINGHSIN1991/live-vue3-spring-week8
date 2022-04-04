@@ -6,6 +6,10 @@ const routes = [
     component: () => import('../views/FrontView.vue'),
     children: [
       {
+        path: '',
+        component: () => import('../views/frontend/HomeView.vue'),
+      },
+      {
         path: 'products',
         component: () => import('../views/frontend/ProductsView.vue'),
       },

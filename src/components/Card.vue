@@ -4,7 +4,7 @@
       <img
         calss="img-fluid"
         :src="product.imageUrl"
-        alt=""
+        :alt="product.title"
       />
       <p class="card-tag" v-if="product.price !== product.origin_price">
         ON SALE

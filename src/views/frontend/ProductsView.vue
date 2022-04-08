@@ -2,7 +2,7 @@
   <h2>產品列表</h2>
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <ul class="d-flex flex-wrap flex-md-nowrap d-xl-block justify-content-md-center">
           <li class="category-link mb-xl-4">全部商品</li>
           <li>我的收藏</li>
@@ -16,8 +16,10 @@
           <li>其他產品</li>
           <hr>
           <li>優惠組合</li>
+          <li>加購商品</li>
         </ul>
       </div>
+      <div class="col-md-1"></div>
       <div class="col-md-9">
         <div class="row gx-5 gy-3">
           <template v-for="item in products" :key="item.id + 'card'">

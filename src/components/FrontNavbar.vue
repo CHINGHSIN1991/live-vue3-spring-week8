@@ -2,7 +2,12 @@
   <div class="bg-white sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <router-link class="navbar-brand" to="/">前台</router-link>
+        <router-link class="navbar-brand" to="/">
+          <img
+            class="frontbar-logo top-0"
+            src="@/assets/images/kuanLOGO.png"
+            alt="甜點寬治療室LOGO"/>
+        </router-link>
         <button
           class="navbar-toggler"
           type="button"

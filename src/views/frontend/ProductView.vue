@@ -107,7 +107,7 @@
                   class="btn btn-outline-dark border-0 w-100 py-2"
                   type="button"
                   id="cart-button"
-                  @click.prevent="addToCart"
+                  @click.prevent="addToCart(this.product.id)"
                 >
                   加入購物車
                   <i class="bi bi-cart"></i>
@@ -147,27 +147,22 @@ export default {
     getProduct() {
       console.log(this.$route);
       console.log('getProduct');
+      console.log(this.$route.params);
       const { id } = this.$route.params;
       this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`).then((res) => {
         console.log('print if success');
         this.product = res.data.product;
       });
     },
-    addToCart(qty = 1) {
-      console.log(this.product.id);
+    addToCart(id) {
       const data = {
-        product_id: this.product.id,
-        qty,
+        product_id: id,
+        qty: this.qty,
       };
-      this.$http.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`, { data }).then((res) => {
-        console.log(res);
-      }).catch((err) => {
-        console.log(err);
-        this.emitter.emit('push-message', {
-          type: 'error',
-          message: '發生錯誤，請重新整理頁面',
+      this.$http.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`, { data })
+        .then((res) => {
+          console.log(res);
         });
-      });
     },
     addQty() {
       this.qty += 1;

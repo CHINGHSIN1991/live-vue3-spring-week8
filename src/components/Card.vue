@@ -9,8 +9,8 @@
       <p class="card-tag" v-if="product.price !== product.origin_price">
         ON SALE
       </p>
-      <a class="card-favicon" href="">
-        <i class="bi bi-heart-fill" v-if="myFavorite.includes(product.id)"></i>
+      <a class="card-favicon" @click.prevent="toggleFavorite(product.id)" href="">
+        <i class="bi bi-heart-fill" v-if="userFavorite.includes(product.id)"></i>
         <i class="bi bi-heart" v-else></i>
       </a>
       <div class="card-detail pt-4">
@@ -19,17 +19,17 @@
           <i class="bi bi-arrow-right"></i>
         </router-link>
       </div>
-      <div class="card-soldout" v-if="is_enabled == true">
+      <!-- <div class="card-soldout" v-if="is_enabled == true">
         <h5 class="card-soldouttag">SOLD OUT</h5>
-      </div>
+      </div> -->
     </div>
     <div class="card-info">
       <h6 class="card-title"> {{ product.title}} </h6>
-      <h7 class="card-pricetag">NT$ {{ product.price }}
+      <h6 class="card-pricetag">NT$ {{ product.price }}
         <span class="card-orgprice ml-2"
           v-if="product.price !== product.origin_price">$ {{ product.origin_price}}
         </span>
-      </h7>
+      </h6>
     </div>
   </div>
 </template>
@@ -38,11 +38,17 @@
 export default {
   props: {
     product: Object,
-    myFavorite: {
+    userFavorite: {
       type: Array,
       default() {
         return [];
       },
+    },
+  },
+  // inject: ['emitter'],
+  methods: {
+    toggleFavorite(id) {
+      this.$emit('toggle-favorite', id);
     },
   },
 };

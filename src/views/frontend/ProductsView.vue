@@ -4,14 +4,14 @@
     <div class="row">
       <div class="col-md-2">
         <ul class="d-flex flex-wrap flex-md-nowrap d-xl-block justify-content-md-center">
-          <li class="category-link mb-xl-4">全部商品</li>
-          <li>我的收藏</li>
+          <li><button type="button" @click="getProducts('')">全部商品</button></li>
+          <li><button type="button" @click="goToFavorite">我的收藏</button></li>
           <hr>
-          <li>乳酪蛋糕</li>
+          <li><button type="button" @click="getProducts('乳酪蛋糕')">乳酪蛋糕</button></li>
           <li>鮮奶油蛋糕</li>
-          <li>磅蛋糕</li>
+          <li><button type="button" @click="getProducts('磅蛋糕')">磅蛋糕</button></li>
           <hr>
-          <li>手作餅乾</li>
+          <li><button type="button" @click="getProducts('餅乾')">手作餅乾</button></li>
           <li>司康</li>
           <li>其他產品</li>
           <hr>
@@ -23,7 +23,9 @@
       <div class="col-md-9">
         <div class="row gx-5 gy-3">
           <template v-for="item in products" :key="item.id + 'card'">
-            <Card :product="item"></Card>
+            <Card :product="item"
+            :userFavorite="userFavorite"
+            @toggle-favorite="toggleFavorite"></Card>
           </template>
         </div>
       </div>
@@ -41,13 +43,70 @@ export default {
   data() {
     return {
       products: [],
+      userFavorite: JSON.parse(localStorage.getItem('userFavorite')) || [],
+      favoriteProductList: [],
+      inFavoritePage: false,
     };
   },
   methods: {
-    getProducts() {
-      this.$http(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`).then((res) => {
-        this.products = res.data.products;
-      });
+    getProducts(category) {
+      this.inFavoritePage = false;
+      if (category) {
+        this.$http(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?category=${category}`).then((res) => {
+          this.products = res.data.products;
+        });
+      } else {
+        this.$http(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`).then((res) => {
+          this.products = res.data.products;
+        });
+      }
+    },
+    toggleFavorite(id) {
+      console.log(id);
+      const favoriteIndex = this.userFavorite.findIndex((item) => item === id);
+      console.log(this.userFavorite);
+      if (favoriteIndex === -1) {
+        this.userFavorite.push(id);
+        console.log('add to favorite', this.userFavorite, id);
+      } else {
+        this.userFavorite.splice(favoriteIndex, 1);
+        console.log('have to remove', id);
+      }
+      console.log(this.userFavorite);
+    },
+    goToFavorite() {
+      this.inFavoritePage = true;
+      this.getFavorite();
+    },
+    getFavorite() {
+      this.favoriteProductList = [];
+      if (this.userFavorite.length > 0) {
+        this.userFavorite.forEach((item) => {
+          this.$http.get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${item}`)
+            .then((res) => {
+              this.favoriteProductList.push(res.data.product);
+            }).catch(() => {
+              this.emitter.emit('push-message', {
+                type: 'error',
+                message: '發生錯誤，請重新整理頁面',
+              });
+            });
+        });
+        this.products = this.favoriteProductList;
+      } else {
+        this.products = [];
+      }
+    },
+  },
+  watch: {
+    userFavorite: {
+      handler() {
+        localStorage.setItem('userFavorite', JSON.stringify(this.userFavorite));
+        if (this.inFavoritePage === true) {
+          this.getFavorite();
+        }
+      },
+      deep: true,
     },
   },
   mounted() {

@@ -35,7 +35,9 @@ export default {
         const api = `${process.env.VUE_APP_API}api/user/check`;
         this.$http.post(api, { api_token: this.token })
           .then(() => {
+            // console.log(this.checkSuccess);
             this.checkSuccess = true;
+            // console.log(this.checkSuccess);
           })
           .catch((err) => {
             alert(err.data.message);

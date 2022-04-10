@@ -1,71 +1,5 @@
 <template>
-  <h2>購物車</h2>
-  <!-- <div class="container">
-    <table class="table align-middle">
-    <thead>
-      <tr>
-        <th>圖片</th>
-        <th>商品名稱</th>
-        <th>價格</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="product in products" :key="product.id">
-        <td style="width: 200px">
-          <div
-            :style="{ backgroundImage: `url(${product.imageUrl})` }"
-            style="
-              height: 100px;
-              background-size: cover;
-              background-position: center;
-            "
-          ></div>
-        </td>
-        <td>
-          {{ product.title }}
-        </td>
-        <td>
-          <div class="h5" v-if="product.price === product.origin_price">
-            {{ product.price }} 元
-          </div>
-          <div v-else>
-            <del class="h6">原價 {{ product.origin_price }} 元</del>
-            <div class="h5">現在只要 {{ product.price }} 元</div>
-          </div>
-        </td>
-        <td>
-          <div class="btn-group btn-group-sm">
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              @click="openProductModal(product.id)"
-              :disabled="isLoadingItem === product.id"
-            >
-              <i
-                class="fas fa-spinner fa-pulse"
-                v-show="isLoadingItem === product.id"
-              ></i>
-              查看更多
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-danger"
-              @click="addToCart(product.id)"
-              :disabled="isLoadingItem === product.id"
-            >
-              <i
-                class="fas fa-spinner fa-pulse"
-                v-show="isLoadingItem === product.id"
-              ></i>
-              加到購物車
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div> -->
+  <h2>填寫資料</h2>
   <div class="container">
     <div class="row d-flex flex-row-reverse">
       <div class="col-sm-4">
@@ -83,11 +17,9 @@
           <div class="d-flex justify-content-between mt-3 border-top pt-3">
             <p class="fw-bold">結帳總金額</p><p>{{ final_total+60 }}</p>
           </div>
-          <router-link :to="`/purchase`">
-            <button type="button" class="w-100 text-center">
-              前往結帳<i class="bi bi-arrow-right"></i>
-            </button>
-          </router-link>
+          <button type="button" class="w-100 text-center">
+            前往結帳<i class="bi bi-arrow-right"></i>
+          </button>
         </div>
       </div>
       <div class="col-sm-8">
@@ -107,7 +39,7 @@
               mb-5
             "
           >
-            <router-link class="white-hover" :to="`/products`">
+            <router-link class="white-hover" :to="`/shop`">
               前往商店</router-link
             >
           </div>

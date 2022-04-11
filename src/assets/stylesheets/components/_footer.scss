@@ -1,0 +1,43 @@
+.footer-logo {
+  position: relative;
+  // width: 12rem;
+}
+
+.footer-bottom-line {
+  width: 2.5rem;
+  height: 0.1875rem;
+  background-color: rgb(58, 58, 58);
+}
+
+.footer-icon{
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(40, 40, 40);
+  transition-duration: 0.3s;
+  color: $warning;
+  cursor: pointer;
+}
+
+.footer-icon-link{
+  transition-duration: 0.3s;
+  color: $warning;
+}
+
+.footer-icon:hover{
+  background-color: rgb(89, 70, 70);
+}
+
+.footer-icon:hover .footer-icon-link{
+  color: white;
+}
+
+.footer-text-link{
+  color: black;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+
+.footer-text-link:hover{
+  color: rgb(84, 69, 69);
+  background-color: rgb(255, 221, 163);
+}

@@ -25,9 +25,7 @@
               <router-link class="nav-link" to="/login">登入後台</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/products"
-                >產品連結</router-link
-              >
+              <router-link class="nav-link" to="/products">產品連結</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/cart">購物車</router-link>

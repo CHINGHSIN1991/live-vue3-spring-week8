@@ -101,7 +101,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 col-9">
             <div class="input-group mb-3 rounded-3 border border-2 border-dark mt-3">
                 <button
                   class="btn btn-outline-dark border-0 w-100 py-2"
@@ -114,7 +114,7 @@
                 </button>
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 col-3">
             <div class="input-group mb-3 rounded-3 border border-2 border-dark mt-3">
                 <button
                   class="btn btn-outline-dark border-0 w-100 py-2"

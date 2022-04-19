@@ -1,4 +1,4 @@
-# vue_week7_master
+# kuans dessert clinic
 
 ## Project setup
 ```

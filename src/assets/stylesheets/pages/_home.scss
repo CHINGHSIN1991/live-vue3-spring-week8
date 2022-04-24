@@ -1,0 +1,92 @@
+.home-cover{
+  height: 90vh;
+  background-image: url(./assets/images/kuanCover.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.home-top-link{
+  z-index: 20;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+
+.home-back-top{
+  width: 50px;
+  height: 50px;
+  background-color: rgb(42, 41, 41);
+}
+
+.home-texts{
+  position: absolute;
+  left: 80px;
+  bottom: -100px;  
+}
+
+.home-cover-img{
+  width: 240px;
+  object-fit: cover;
+}
+
+.home-text-line{
+  width: 16px;
+  background-color: $warning;
+}
+
+.home-section1-line{
+  width: 30px;
+}
+
+.home-section-line{
+  font-size: 0.875rem;
+  width: 30px;
+  background-color: rgba(177, 157, 134, 0.8);
+  backdrop-filter: blur(8px);
+  color: white;
+}
+
+.home-section-slogan{
+  position: absolute;
+  top: -32px;  
+}
+
+.home-section-slogan-right{
+  right: 8%;
+}
+
+.home-section-slogan-left{
+  left: 8%;
+}
+
+.home-section-content{
+  position: absolute;
+  top: -24px;
+}
+
+.home-section-img{
+  height: 240px;
+  background-size: cover;
+  background-position: center;  
+}
+
+.home-section-icon{
+  width: 60px;
+}
+
+.home-category {
+  height: 160px;
+  background-color: rgb(213, 213, 213);
+}
+
+.home-img1{
+  background-image: url(./assets/images/QualityInspectionCover.jpg);
+}
+
+.home-img2{
+  background-image: url(./assets/images/FreshProductsCover.jpg);
+}
+
+.home-img3{
+  background-image: url(./assets/images/FestivalProductsCover.jpg);
+}

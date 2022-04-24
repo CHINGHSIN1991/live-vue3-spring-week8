@@ -1,0 +1,37 @@
+.menu-listitem{
+  transition: 0.5s;
+}
+
+.menu-listitem:hover .menu-bar{
+  transition: 0.5s;
+  width: 130%;
+}
+
+.menu-link{
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  // font-weight: bold;
+}
+
+.menu-bar-active{
+  background-color: rgb(207, 190, 170) !important;
+  width: 130% !important;
+}
+
+.menu-link:hover{
+  color: black;
+}
+
+.menu-bar{
+  position: absolute;
+  left: -4px;
+  bottom: 0px;
+  width: 0%;
+  height: 12px;
+  background-color: rgb(225, 219, 219);
+}
+
+.menu-active{
+  background-color: rgb(113, 16, 16);
+}

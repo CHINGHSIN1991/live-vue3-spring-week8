@@ -98,8 +98,22 @@
           class="px-4 mx-0"
           :modules="modules"
           navigation
-          :slides-per-view="4"
-          :space-between="0"
+          :slides-per-view="1"
+          :space-between="16"
+          :breakpoints="{
+            '768': {
+              slidesPerView: 2,
+              spaceBetween: 8,
+            },
+            '992': {
+              slidesPerView: 3,
+              spaceBetween: 8,
+            },
+            '1200': {
+              slidesPerView: 4,
+              spaceBetween: 8,
+            },
+          }"
         >
           <template v-for="item in products" :key="item.id + 'card'">
             <swiper-slide v-if="item.recommended">
@@ -151,56 +165,63 @@
       <div class="home-section1-line mx-3 p-2 fw-bold">╱季節商品</div>
     </div>
     <div class="row py-4 px-5 g-4">
-      <a href="#" @click.prevent="goToCategory('餅乾')" class="col-6">
-        <div class="home-category mx-2 rounded-2 border">
-          手作餅乾
+      <a href="#" @click.prevent="goToCategory('餅乾')" class="home-category-link col-7">
+        <div class="home-category home-category-bg-cookie rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">手作餅乾</h5>
         </div>
       </a>
-      <div class="col-6">
-        <div class="home-category mx-2 rounded-2 border">
-          鮮奶油蛋糕
+      <a href="#" @click.prevent="goToCategory('鮮奶油蛋糕')" class="home-category-link col-5">
+        <div class="home-category home-category-bg-screamcake rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">鮮奶油蛋糕</h5>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="home-category mx-2 rounded-2 border">
-          法式塔
+      </a>
+      <a href="#" @click.prevent="goToCategory('法式塔')" class="home-category-link col-4">
+        <div class="home-category home-category-bg-tart rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">法式塔</h5>
         </div>
-      </div>
-      <div class="col-6">
-        <div class="home-category mx-2 rounded-2 border">
-          乳酪蛋糕
+      </a>
+      <a href="#" @click.prevent="goToCategory('乳酪蛋糕')" class="home-category-link col-5">
+        <div class="home-category home-category-bg-cheesecake rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">乳酪蛋糕</h5>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="home-category mx-2 rounded-2 border">
-          英式司康
+      </a>
+      <a href="#" @click.prevent="goToCategory('司康')" class="home-category-link col-3">
+        <div class="home-category home-category-bg-scone rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">英式司康</h5>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="home-category mx-2 rounded-2 border">
-          磅蛋糕
+      </a>
+      <a href="#" @click.prevent="goToCategory('磅蛋糕')" class="home-category-link col-3">
+        <div class="home-category home-category-bg-poundcake rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">磅蛋糕</h5>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="home-category mx-2 rounded-2 border">
-          加購商品
+      </a>
+      <a href="#" @click.prevent="goToCategory('加購商品')" class="home-category-link col-3">
+        <div class="home-category home-category-bg-addon rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">加購商品</h5>
         </div>
-      </div>
-      <div class="col-6">
-        <div class="home-category mx-2 rounded-2 border">
-          其他產品
+      </a>
+      <a href="#" @click.prevent="goToCategory('其他')" class="home-category-link col-6">
+        <div class="home-category home-category-bg-others rounded-2 overflow-hidden">
+          <div class="home-mask position-absolute"></div>
+          <h5 class="home-category-title text-white text-center">其他產品</h5>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue';
-import { Navigation, Pagination } from 'swiper';
+import { Navigation } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.min.css';
-import 'swiper/modules/pagination/pagination.min.css';
 
 export default {
   components: {
@@ -213,7 +234,7 @@ export default {
       favoriteProductList: [],
       inFavoritePage: false,
       nowCategory: '',
-      modules: [Navigation, Pagination],
+      modules: [Navigation],
     };
   },
   inject: ['emitter'],

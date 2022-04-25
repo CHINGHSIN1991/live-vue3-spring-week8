@@ -48,7 +48,8 @@
 .card-upper{
   font-size: 0.875rem;
   margin-top: 20px;
-  height: 180px;
+  width: 160px;
+  height: 200px;
   overflow: hidden;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
   border-radius: 4px;
@@ -115,7 +116,7 @@ h6{
 
 @include media-breakpoint-up(md) {
   .card-upper{
-    width: 150px;
+    width: 160px;
   }
 }
 

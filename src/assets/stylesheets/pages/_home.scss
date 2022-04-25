@@ -74,12 +74,60 @@
   width: 60px;
 }
 
+.home-category-link{
+  text-decoration: none;
+}
+
+.home-category-link:hover .home-category-img {
+  width: 120%;
+  height: 120%;
+}
+
+.home-category-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
 .home-category {
   height: 160px;
   background-color: rgb(213, 213, 213);
+  background-size: 100%;
+  background-position: center center;
+  transition: 0.3s;
 }
 
-.home-img1{
+.home-category-link:hover .home-category {
+  background-size: 120%;
+}
+
+.home-mask{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(177, 157, 134, 0.1);
+  transition: 0.3s;
+}
+
+.home-category-link:hover .home-mask {
+  background-color: rgba(27, 27, 27, 0.7);
+}
+
+.home-category-title{
+  position: relative;
+  left: auto;
+  right: auto;
+  top: 80%;
+  opacity: 0%;
+  transition: 0.5s;
+}
+
+.home-category-link:hover .home-category-title {
+  top: 42%;
+  opacity: 100%;
+}
+
+.home-img1 {
   background-image: url(./assets/images/QualityInspectionCover.jpg);
 }
 
@@ -87,6 +135,38 @@
   background-image: url(./assets/images/FreshProductsCover.jpg);
 }
 
-.home-img3{
+.home-img3 {
   background-image: url(./assets/images/FestivalProductsCover.jpg);
+}
+
+.home-category-bg-others {
+  background-image: url(./assets/images/others.jpg);
+}
+
+.home-category-bg-addon{
+  background-image: url(./assets/images/addon.jpg);
+}
+
+.home-category-bg-poundcake{
+  background-image: url(./assets/images/poundcake.jpg);
+}
+
+.home-category-bg-scone{
+  background-image: url(./assets/images/scone.jpg);
+}
+
+.home-category-bg-cheesecake{
+  background-image: url(./assets/images/cheesecakes.jpg);
+}
+
+.home-category-bg-tart{
+  background-image: url(./assets/images/tarts.jpg);
+}
+
+.home-category-bg-screamcake{
+  background-image: url(./assets/images/screamcake.jpg);
+}
+
+.home-category-bg-cookie {
+  background-image: url(./assets/images/cookies.jpg);
 }

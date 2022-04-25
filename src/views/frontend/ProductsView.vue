@@ -112,7 +112,7 @@ export default {
     },
   },
   mounted() {
-    this.getProducts();
+    this.getProducts(this.$route.query.category);
   },
 };
 </script>

@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="col-12 fs-8 mt-5 text-muted text-center text-lg-start">
-          本網站僅供個人作品使用，不提供任何商業用途 / 圖片素材取自Unsplash及甜點寬製療室授權提供
+          本網站僅供個人作品使用，不提供任何商業用途 / 圖片素材取自Unsplash及甜點寬製療室授權提供或陳敬昕本人繪製
         </div>
       </div>
     </div>

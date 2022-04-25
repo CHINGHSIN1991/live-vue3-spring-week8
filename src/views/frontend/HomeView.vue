@@ -145,7 +145,7 @@
       </div>
     </div>
     <div class="section d-flex justify-content-center mt-md-0 my-4">
-      <div class="home-section1-line mx-3 p-2 fw-bold">╱各類點心</div>
+      <div class="home-section1-line mx-3 p-2 fw-bold">╱各類甜點</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱訂製蛋糕</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱優惠組合</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱季節商品</div>

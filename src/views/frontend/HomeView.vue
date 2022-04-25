@@ -164,7 +164,7 @@
       <div class="home-section1-line mx-3 p-2 fw-bold">╱優惠組合</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱季節商品</div>
     </div>
-    <div class="row py-4 px-5 g-4">
+    <div class="row py-4 px-5 g-md-4 g-2">
       <a href="#" @click.prevent="goToCategory('餅乾')" class="home-category-link col-7">
         <div class="home-category home-category-bg-cookie rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
@@ -177,37 +177,37 @@
           <h5 class="home-category-title text-white text-center">鮮奶油蛋糕</h5>
         </div>
       </a>
-      <a href="#" @click.prevent="goToCategory('法式塔')" class="home-category-link col-4">
+      <a href="#" @click.prevent="goToCategory('法式塔')" class="home-category-link col-xl-4 col-5">
         <div class="home-category home-category-bg-tart rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
           <h5 class="home-category-title text-white text-center">法式塔</h5>
         </div>
       </a>
-      <a href="#" @click.prevent="goToCategory('乳酪蛋糕')" class="home-category-link col-5">
+      <a href="#" @click.prevent="goToCategory('乳酪蛋糕')" class="home-category-link col-xl-5 col-7">
         <div class="home-category home-category-bg-cheesecake rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
           <h5 class="home-category-title text-white text-center">乳酪蛋糕</h5>
         </div>
       </a>
-      <a href="#" @click.prevent="goToCategory('司康')" class="home-category-link col-3">
+      <a href="#" @click.prevent="goToCategory('司康')" class="home-category-link col-xl-3 col-6">
         <div class="home-category home-category-bg-scone rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
           <h5 class="home-category-title text-white text-center">英式司康</h5>
         </div>
       </a>
-      <a href="#" @click.prevent="goToCategory('磅蛋糕')" class="home-category-link col-3">
+      <a href="#" @click.prevent="goToCategory('磅蛋糕')" class="home-category-link col-xl-3 col-6">
         <div class="home-category home-category-bg-poundcake rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
           <h5 class="home-category-title text-white text-center">磅蛋糕</h5>
         </div>
       </a>
-      <a href="#" @click.prevent="goToCategory('加購商品')" class="home-category-link col-3">
+      <a href="#" @click.prevent="goToCategory('加購商品')" class="home-category-link col-xl-3 col-4">
         <div class="home-category home-category-bg-addon rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
           <h5 class="home-category-title text-white text-center">加購商品</h5>
         </div>
       </a>
-      <a href="#" @click.prevent="goToCategory('其他')" class="home-category-link col-6">
+      <a href="#" @click.prevent="goToCategory('其他')" class="home-category-link col-xl-6 col-8">
         <div class="home-category home-category-bg-others rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
           <h5 class="home-category-title text-white text-center">其他產品</h5>

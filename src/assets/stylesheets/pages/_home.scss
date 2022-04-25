@@ -79,15 +79,15 @@
 }
 
 .home-category {
-  height: 160px;
+  height: 120px;
   background-color: rgb(213, 213, 213);
-  background-size: 100%;
+  background-size: 120%;
   background-position: center center;
   transition: 0.3s;
 }
 
 .home-category-link:hover .home-category {
-  background-size: 120%;
+  background-size: 140%;
 }
 
 .home-mask{
@@ -158,4 +158,10 @@
 
 .home-category-bg-cookie {
   background-image: url(./assets/images/cookies.jpg);
+}
+
+@include media-breakpoint-up(md) {
+  .home-category{
+    height: 160px;
+  }
 }

@@ -3,7 +3,7 @@
     <div class="home-back-top fs-2 text-white text-center"><i class="bi bi-arrow-bar-up"></i></div>
   </a>
   <div class="container">
-    <div class="home-cover m-5 d-flex flex-column align-items-center">
+    <div class="home-cover mx-5 d-flex flex-column align-items-center">
       <div></div>
       <img
         src="@/assets/images/kuanLOGObig.png"
@@ -11,16 +11,17 @@
         class="home-cover-img mt-5"
       />
     </div>
-    <div class="section d-flex justify-content-center">
+    <!-- section1 title -->
+    <div class="section d-flex justify-content-center m-5">
       <div class="home-section1-line mx-3 p-2 fw-bold">╱嚴選的食材</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱客製化蛋糕</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱各節慶點心</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱天然無添加</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱宅配無距離</div>
     </div>
-    <div class="section mx-5 mb-5 pb-sm-1 pb-2">
-      <div class="row pb-xl-5 pt-xl-3 mb-xl-5 pb-sm-7 mt-sm-5 mb-sm-7 pb-8 mb-8 mt-6
-      flex-xl-row-reverse">
+    <!-- section1 content -->
+    <div class="section m-5 pb-xl-0 border">
+      <div class="row pb-xl-5 my-xl-5 pb-sm-7 my-sm-7 pb-8 my-8 flex-xl-row-reverse">
         <div class="home-section-img home-img1 col-xl-8 rounded-2">
           <div class="home-section-slogan home-section-slogan-right d-flex align-items-start">
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">安心的食材</div>
@@ -62,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="row py-xl-5 my-xl-5 py-sm-7 my-sm-7 py-8 my-8 flex-xl-row-reverse">
+      <div class="row pt-xl-5 mt-xl-5 pt-sm-7 mt-sm-7 pt-8 mt-8 flex-xl-row-reverse">
         <div class="home-section-img home-img3 col-xl-8 rounded-2">
           <div class="home-section-slogan home-section-slogan-right d-flex align-items-start">
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">安心的食材</div>
@@ -84,16 +85,15 @@
         </div>
       </div>
     </div>
-    <div class="section d-flex justify-content-center mt-md-0 mt-sm-2 mt-7 mb-3">
+    <!-- section2 title -->
+    <div class="section d-flex justify-content-center m-5">
       <div class="home-section1-line mx-3 p-2 fw-bold">╱推薦商品</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱設計餐具</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱生活點綴</div>
     </div>
-    <div class="section mx-5 mb-5 mt-2 pb-sm-1 pb-2">
+    <!-- section2 content -->
+    <div class="section mx-5 mt-2 pb-sm-1">
       <div class="row">
-        <!-- <a href="#" class="col-1 fs-3 mt-7 pt-7 border">
-          <i class="bi bi-arrow-left-circle"></i>
-        </a> -->
         <Swiper
           class="px-4 mx-0"
           :modules="modules"
@@ -158,61 +158,78 @@
         </a> -->
       </div>
     </div>
-    <div class="section d-flex justify-content-center mt-md-0 my-4">
+    <!-- section3 title -->
+    <div class="section d-flex justify-content-center m-5">
       <div class="home-section1-line mx-3 p-2 fw-bold">╱各類甜點</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱訂製蛋糕</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱優惠組合</div>
       <div class="home-section1-line mx-3 p-2 fw-bold">╱季節商品</div>
     </div>
-    <div class="row py-4 px-5 g-md-4 g-2">
+    <!-- section3 content -->
+    <div class="row mx-5 g-md-3 g-2">
       <a href="#" @click.prevent="goToCategory('餅乾')" class="home-category-link col-7">
         <div class="home-category home-category-bg-cookie rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">手作餅乾</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">手作餅乾</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('鮮奶油蛋糕')" class="home-category-link col-5">
         <div class="home-category home-category-bg-screamcake rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">鮮奶油蛋糕</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">鮮奶油蛋糕</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('法式塔')" class="home-category-link col-xl-4 col-5">
         <div class="home-category home-category-bg-tart rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">法式塔</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">法式塔</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('乳酪蛋糕')" class="home-category-link col-xl-5 col-7">
         <div class="home-category home-category-bg-cheesecake rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">乳酪蛋糕</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">乳酪蛋糕</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('司康')" class="home-category-link col-xl-3 col-6">
         <div class="home-category home-category-bg-scone rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">英式司康</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">英式司康</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('磅蛋糕')" class="home-category-link col-xl-3 col-6">
         <div class="home-category home-category-bg-poundcake rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">磅蛋糕</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">磅蛋糕</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('加購商品')" class="home-category-link col-xl-3 col-4">
         <div class="home-category home-category-bg-addon rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">加購商品</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">加購商品</h5>
       </a>
       <a href="#" @click.prevent="goToCategory('其他')" class="home-category-link col-xl-6 col-8">
         <div class="home-category home-category-bg-others rounded-2 overflow-hidden">
           <div class="home-mask position-absolute"></div>
-          <h5 class="home-category-title text-white text-center">其他產品</h5>
         </div>
+        <h5 class="home-category-title text-white text-center">其他產品</h5>
       </a>
+    </div>
+    <!-- section4 title -->
+    <div class="section d-flex justify-content-center m-5">
+      <div class="home-section1-line mx-3 p-2 fw-bold">╱關於甜點寬</div>
+      <div class="home-section1-line mx-3 p-2 fw-bold">╱訂製蛋糕</div>
+      <div class="home-section1-line mx-3 p-2 fw-bold">╱優惠組合</div>
+      <div class="home-section1-line mx-3 p-2 fw-bold">╱季節商品</div>
+    </div>
+    <!-- section4 content -->
+    <div class="section d-flex justify-content-center mt-md-0 mt-sm-2 mt-7 mb-3">
+      <p>13435464</p>
+      <div class="home-section1-line mx-3 p-2">海軍服役的日子，</div>
+      <div class="home-section1-line mx-3 p-2">陰錯陽差下開始自學甜點。</div>
+      <div class="home-section1-line mx-3 p-2">分享給親朋友好友甜點時，</div>
+      <div class="home-section1-line mx-3 p-2">最喜歡當下充滿開心的表情。</div>
     </div>
   </div>
 </template>

@@ -80,7 +80,6 @@
 
 .home-category {
   height: 120px;
-  background-color: rgb(213, 213, 213);
   background-size: 120%;
   background-position: center center;
   transition: 0.3s;
@@ -102,18 +101,18 @@
 }
 
 .home-category-title{
-  z-index: 20;
+  height: 0px;
   position: relative;
   left: auto;
   right: auto;
-  top: 80%;
-  opacity: 0%;
+  bottom: 20%;
+  opacity: 0;
   transition: 0.5s;
 }
 
 .home-category-link:hover .home-category-title {
-  top: 42%;
-  opacity: 100%;
+  bottom: 50%;
+  opacity: 1;
 }
 
 .home-img1 {

@@ -9,58 +9,90 @@
           <div class="row">
             <div class="mb-2 col-sm-6">
               <label for="userName" class="col-form-label">訂購人姓名</label>
-              <Field type="text" placeholder="姓名" class="form-control"
-              id="userName" v-model="form.user.name"
-              name="姓名"
-              rules="required"
-              :class="{ 'is-invalid': errors['姓名'] }"/>
-              <ErrorMessage name="姓名" class="invalid-feedback"/>
-          </div>
+              <Field
+                type="text"
+                placeholder="姓名"
+                class="form-control"
+                id="userName"
+                v-model="form.user.name"
+                name="姓名"
+                rules="required"
+                :class="{ 'is-invalid': errors['姓名'] }"
+              />
+              <ErrorMessage name="姓名" class="invalid-feedback" />
+            </div>
             <div class="mb-2 col-sm-6">
               <label for="userEmail" class="col-form-label">信箱</label>
-              <Field type="text" placeholder="訂購資訊信箱" class="form-control"
-              id="userEmail" v-model="form.user.email"
-              name="電子信箱"
-              rules="email|required"
-              :class="{ 'is-invalid': errors['電子信箱'] }"/>
-              <ErrorMessage name="電子信箱" class="invalid-feedback"/>
+              <Field
+                type="text"
+                placeholder="訂購資訊信箱"
+                class="form-control"
+                id="userEmail"
+                v-model="form.user.email"
+                name="電子信箱"
+                rules="email|required"
+                :class="{ 'is-invalid': errors['電子信箱'] }"
+              />
+              <ErrorMessage name="電子信箱" class="invalid-feedback" />
             </div>
             <div class="mb-2 col-sm-4">
               <label for="userPhone" class="col-form-label">聯絡電話</label>
-              <Field type="tel" placeholder="連絡電話" class="form-control"
-              id="userPhone" v-model="form.user.tel"
-              name="連絡電話"
-              :rules="isPhone"
-              :class="{ 'is-invalid': errors['連絡電話'] }"/>
-              <ErrorMessage name="連絡電話" class="invalid-feedback"/>
+              <Field
+                type="tel"
+                placeholder="連絡電話"
+                class="form-control"
+                id="userPhone"
+                v-model="form.user.tel"
+                name="連絡電話"
+                :rules="isPhone"
+                :class="{ 'is-invalid': errors['連絡電話'] }"
+              />
+              <ErrorMessage name="連絡電話" class="invalid-feedback" />
             </div>
             <div class="mb-2 col-sm-8">
               <label for="userAddress" class="col-form-label">寄送地址</label>
-              <Field type="text" placeholder="請輸入寄送地址" class="form-control"
-              id="userAddress" v-model="form.user.address"
-              name="地址"
-              rules="required"
-              :class="{ 'is-invalid': errors['地址'] }"/>
-              <ErrorMessage name="地址" class="invalid-feedback"/>
+              <Field
+                type="text"
+                placeholder="請輸入寄送地址"
+                class="form-control"
+                id="userAddress"
+                v-model="form.user.address"
+                name="地址"
+                rules="required"
+                :class="{ 'is-invalid': errors['地址'] }"
+              />
+              <ErrorMessage name="地址" class="invalid-feedback" />
             </div>
             <div class="mb-2">
               <label for="userMessage" class="form-label">備註</label>
-              <textarea class="form-control" id="userMessage" rows="3"
-              v-model="form.message"></textarea>
+              <textarea
+                class="form-control"
+                id="userMessage"
+                rows="3"
+                v-model="form.message"
+              ></textarea>
             </div>
             <div class="m-3 form-check">
-              <Field class="form-check-input" type="checkbox" value="checked" id="userTerms"
-              name="check"
-              :class="{ 'is-invalid': errors['check'] }"
-              :rules="termsCheck"/>
+              <Field
+                class="form-check-input"
+                type="checkbox"
+                value="checked"
+                id="userTerms"
+                name="check"
+                :class="{ 'is-invalid': errors['check'] }"
+                :rules="termsCheck"
+              />
               <label class="form-check-label text-dark" for="userTerms">
                 我已閱讀並確認網站的訂購條款
               </label>
-              <ErrorMessage name="check" class="invalid-feedback"/>
+              <ErrorMessage name="check" class="invalid-feedback" />
             </div>
           </div>
-          <button type="button" class="btn btn-warning w-100 text-center"
-          @click="onSubmit">
+          <button
+            type="button"
+            class="btn btn-warning w-100 text-center"
+            @click="onSubmit"
+          >
             送出訂單<i class="bi bi-arrow-right"></i>
           </button>
         </Form>
@@ -69,53 +101,88 @@
         <div class="cartlist border border-dark rounded-3 p-4">
           <h5 class="fw-bold text-center pb-4 border-bottom">訂單細項</h5>
           <ul>
-            <li v-for="item in cart"
-            class="row my-4 d-flex align-items-end justify-content-between"
-            :key="item.id">
+            <li
+              v-for="item in cart"
+              class="row my-4 d-flex align-items-end justify-content-between"
+              :key="item.id"
+            >
               <div class="col-2 px-md-2 p-0 cart-img">
-                <img class="w-100 border-0 rounded-2"
-                :src="item.product.imageUrl"
-                :alt="item.product.title">
+                <img
+                  class="w-100 border-0 rounded-2"
+                  :src="item.product.imageUrl"
+                  :alt="item.product.title"
+                />
               </div>
               <div class="col-7 row">
-                <h6 class="px-1 text-start cart-litext">{{ item.product.title }}</h6>
-                <div class="px-1 text-start d-flex justify-content-start cart-litext">
+                <h6 class="px-1 text-start cart-litext">
+                  {{ item.product.title }}
+                </h6>
+                <div
+                  class="
+                    px-1
+                    text-start
+                    d-flex
+                    justify-content-start
+                    cart-litext
+                  "
+                >
                   <span class="text-nowrap">
-                    NT$ {{ (item.product.price).toLocaleString('en-US') }}
+                    NT$ {{ item.product.price.toLocaleString("en-US") }}
                   </span>
                   <span class="mx-lg-4 mx-2">×</span>
                   <span>
-                    <div class="text-nowrap cart_qty d-inline-flex justify-content-center">
-                      {{ item.qty + item.product.unit}}
+                    <div
+                      class="
+                        text-nowrap
+                        cart_qty
+                        d-inline-flex
+                        justify-content-center
+                      "
+                    >
+                      {{ item.qty + item.product.unit }}
                     </div>
                   </span>
                 </div>
               </div>
               <div class="col-3 text-end px-sm-2 px-0">
-                <span class="text-end">NT$ {{ (item.total).toLocaleString('en-US') }}</span>
+                <span class="text-end"
+                  >NT$ {{ item.total.toLocaleString("en-US") }}</span
+                >
               </div>
             </li>
           </ul>
           <div class="info pt-4 border-top">
             <div class="d-flex justify-content-between align-items-center">
-                <p class="fw-bold">商品總計</p><p>NT$ {{ (total).toLocaleString('en-US') }}</p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center"
-              v-if="(total-final_total)>0">
-                <p class="fw-bold">商品折抵</p><p class="text-danger">
-                  - NT$ {{ (Math.round(total-final_total)).toLocaleString('en-US') }}
-                </p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="fw-bold">運費</p><p>NT$ {{ (delivery_charge).toLocaleString('en-US') }}</p>
-              </div>
+              <p class="fw-bold">商品總計</p>
+              <p>NT$ {{ total.toLocaleString("en-US") }}</p>
             </div>
-            <div class="d-flex justify-content-between mt-3 border-top pt-3">
-              <p class="fw-bold">結帳總金額</p><p class="fw-bold fs-5">
-                NT$ {{ (Math.round(final_total+delivery_charge)).toLocaleString('en-US') }}
+            <div
+              class="d-flex justify-content-between align-items-center"
+              v-if="total - final_total > 0"
+            >
+              <p class="fw-bold">商品折抵</p>
+              <p class="text-danger">
+                - NT$
+                {{ Math.round(total - final_total).toLocaleString("en-US") }}
               </p>
             </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="fw-bold">運費</p>
+              <p>NT$ {{ delivery_charge.toLocaleString("en-US") }}</p>
+            </div>
           </div>
+          <div class="d-flex justify-content-between mt-3 border-top pt-3">
+            <p class="fw-bold">結帳總金額</p>
+            <p class="fw-bold fs-5">
+              NT$
+              {{
+                Math.round(final_total + delivery_charge).toLocaleString(
+                  "en-US"
+                )
+              }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -191,20 +258,26 @@ export default {
         });
     },
     delItem(id) {
-      this.$http.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`).then((res) => {
-        console.log('delItem', res);
-        this.getCart();
-      }).catch((err) => {
-        console.log(err);
-      });
+      this.$http
+        .delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`)
+        .then((res) => {
+          console.log('delItem', res);
+          this.getCart();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     delCarts() {
-      this.$http.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`).then((res) => {
-        console.log('delItems', res);
-        this.getCart();
-      }).catch((err) => {
-        console.log(err);
-      });
+      this.$http
+        .delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`)
+        .then((res) => {
+          console.log('delItems', res);
+          this.getCart();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;

@@ -59,11 +59,11 @@
                 </li>
               </ul>
             </div>
-            <div class="col-xl-4 col-3 fs-8">
+            <div class="col-xl-4 col-3">
               <h6 class="text-start fw-bold">Service</h6>
               <hr class="my-1 d-xl-none border border-2 border-dark">
               <div class="footer-bottom-line d-none d-xl-block"></div>
-              <ul class="mt-3">
+              <ul class="mt-3  fs-8">
                 <li class="py-1">
                   <router-link to="/products"
                   class="footer-text-link px-2 py-1 rounded-3">產品連結</router-link>

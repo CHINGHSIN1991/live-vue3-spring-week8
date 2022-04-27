@@ -1,7 +1,7 @@
 <template>
   <div
     id="carouselExampleControls"
-    class="carousel slide d-sm-none"
+    class="carousel slide d-md-none"
     data-bs-ride="carousel"
   >
     <div class="carousel-inner" style="height: 300px">
@@ -39,35 +39,72 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <div class="container">
+  <div class="container mt-6">
     <!-- {{ product }} -->
     <div class="row">
-      <div class="col-1 d-sm-flex d-none">
+      <div class="col-1 d-xl-flex d-none">
         <ul class="list-group list-group-flush">
           <li
-            class="list-group-item"
             v-for="imgUrl in product.imagesUrl"
             :key="imgUrl + 'pcslider'"
           >
-            <img :src="imgUrl" class="card-img-top" alt="" />
+            <a href="#" @click.prevent="changeImage(imgUrl)">
+              <img :src="imgUrl"
+              class="product-transition card-img-top rounded-2 m-1 w-75"
+              :class="{ 'border border-warning border-3': this.currentImage === imgUrl }"
+              alt="" />
+            </a>
           </li>
         </ul>
       </div>
-      <div class="col-5">
-        <img :src="product.imageUrl" class="card-img-top" alt="" />
-      </div>
-      <div class="col-1"></div>
-      <div class="col-sm-5">
-        <div class="menu-chain d-flex text-center mb-4">
-          <router-link to="/products">產品連結</router-link>
+      <div class="col-xl-5 col-6 border-2 d-md-block d-none">
+        <img :src="currentImage" class="m-1 card-img-top rounded-2" alt="" />
+        <ul class="d-xl-none d-sm-inline-flex d-none mt-2">
+          <li
+            v-for="imgUrl in product.imagesUrl"
+            :key="imgUrl + 'pcslider'"
+            class="product-pcitem"
           >
+            <a href="#" @click.prevent="changeImage(imgUrl)">
+              <img :src="imgUrl"
+              class="card-img-top rounded-2 m-1 w-75"
+              :class="{ 'border border-warning border-3': this.currentImage === imgUrl }"
+              alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-1 d-md-block d-none"></div>
+      <div class="col-md-5 px-md-0 px-4">
+        <div class="menu-chain d-flex text-center mb-4">
+          <router-link to="/products" class="menu-listitem">
+            全部商品
+          </router-link>
+          <span class="mx-3">></span>
           <router-link to="/products">{{ product.category }}</router-link>
         </div>
-        <h1 class="mb-4">{{ product.title }}</h1>
-        <h2 class="mb-4">{{ product.price }} / {{ product.unit }}</h2>
-
-        <div class="row">
-          <div class="col-md-5">
+        <h1 class="mb-3 fs-3 fw-bold">{{ product.title }}</h1>
+        <h2 class="mb-3 fs-4">
+          NT$ {{ product.price }} <span class="fs-6">/ {{ product.unit }}</span>
+          <!-- (product.price).toLocaleString('en-US') -->
+        </h2>
+        <hr>
+        <p class="pt-3 mb-3">商品規格 ： {{ product.product_content }}</p>
+        <div class="mb-3 d-flex align-items-start">
+          <p class="text-nowrap">
+            <span v-if="product.category === '加購商品'">商品材質 ： </span>
+            <span v-else>使用食材 ：</span>
+          </p>
+          <p class="ps-1">{{ product.content }}</p>
+        </div>
+        <p class="mb-3">
+          商品尚有 ： {{ product.stock }} {{ product.unit }}
+          <span v-if="qty >= product.stock"
+            class="text-danger fs-8 m-0 p-0 fw-bold mx-2">＊訂購數量已達庫存上限
+          </span>
+        </p>
+        <div class="row mb-3">
+          <div class="col-xl-5">
             <div class="input-group mb-3 rounded-3 border border-2 border-dark mt-3">
               <div class="input-group-prepend">
                 <button
@@ -80,16 +117,7 @@
                   <i class="bi bi-dash-lg"></i>
                 </button>
               </div>
-              <input
-                class="form-control border-0 text-center my-auto shadow-none"
-                aria-label="Example text with button addon"
-                aria-describedby="button-addon1"
-                type="number"
-                min="1"
-                :max="product.stock"
-                v-model="qty"
-                readonly
-              />
+              <div class="form-control border-0 text-center my-auto">{{ qty }}</div>
               <div class="input-group-append">
                 <button
                   class="btn btn-outline-dark border-0 py-2"
@@ -103,7 +131,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-5 col-9">
+          <div class="col-xl-5 col-9">
             <div class="input-group mb-3 rounded-3 border border-2 border-dark mt-3">
                 <button
                   class="btn btn-outline-dark border-0 w-100 py-2"
@@ -116,7 +144,7 @@
                 </button>
             </div>
           </div>
-          <div class="col-md-2 col-3">
+          <div class="col-xl-2 col-3">
             <div class="input-group mb-3 rounded-3 border border-2 border-dark mt-3">
                 <button
                   class="btn btn-outline-dark border-0 w-100 py-2"
@@ -135,17 +163,124 @@
       </div>
     </div>
   </div>
+  <div class="container mt-6 px-4">
+    <ul class="nav nav-tabs nav-justified"
+    id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold active" id="home-tab" data-bs-toggle="tab"
+        data-bs-target="#home" type="button" role="tab"
+        aria-controls="home" aria-selected="true">寄送方式</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold" id="profile-tab" data-bs-toggle="tab"
+        data-bs-target="#profile" type="button" role="tab"
+        aria-controls="profile" aria-selected="false">注意事項</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link  fw-bold" id="contact-tab" data-bs-toggle="tab"
+        data-bs-target="#contact" type="button" role="tab"
+        aria-controls="contact" aria-selected="false">保存方式</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home"
+      role="tabpanel" aria-labelledby="home-tab">1. 親取地點：本工作室（桃園市政府附近）。<br>
+        2. 寄送需自行負擔160元運費，皆為「冷藏黑貓宅配到府」。<br>
+        （註：寄送地址若為同一地點，不管你買多少盒，只酌收一次運費。）<br>
+        3. 寄送會用硬膜圍邊包覆蛋糕本體，但物流運送過程中難免會有些碰撞，有時候會造成小凹痕，若非常在意外觀，不建議訂購。</div>
+      <div class="tab-pane fade" id="profile"
+      role="tabpanel" aria-labelledby="profile-tab">1. 生乳酪為葷食，並含有奶製品、若有食品過敏，不建議食用。<br>
+        2. 鮮奶油蛋糕為蛋奶素，並含有奶製品、茶葉、若有食品過敏，不建議食用。<br>
+        3. 若需要加購：叉盤組一組六個10元、塑膠蛋糕刀一把為5元。</div>
+      <div class="tab-pane fade" id="contact"
+      role="tabpanel" aria-labelledby="contact-tab">1. 生乳酪冷藏保存最多3~5天(寄送者為收貨後3天內)、勿冷凍！<br>
+        2. 鮮奶油蛋糕冷藏保存最多3天，勿冷凍！<br>
+        3. 兩款甜點都建議盡快食用，冷藏口感、味道較佳。<br>
+        4. 勿在室溫下超過一小時半以上，以免奶製品變質，。</div>
+    </div>
+  </div>
+  <div class="container mt-6">
+    <Swiper
+      class="px-4 mx-0"
+      :modules="modules"
+      navigation
+      :slides-per-view="1"
+      :space-between="16"
+      :breakpoints="{
+        '768': {
+          slidesPerView: 2,
+          spaceBetween: 8,
+        },
+        '992': {
+          slidesPerView: 3,
+          spaceBetween: 8,
+        },
+        '1200': {
+          slidesPerView: 4,
+          spaceBetween: 8,
+        },
+      }"
+    >
+      <template v-for="item in Product" :key="item.id + 'card'">
+        <swiper-slide>
+          <div class="card-item d-flex flex-column align-items-center">
+            <div class="card-upper">
+              <img
+                class="card-img"
+                :src="item.imageUrl"
+                :alt="item.title"
+              />
+              <p class="card-tag" v-if="item.price !== item.origin_price">
+                ON SALE
+              </p>
+              <a class="card-favicon" @click.prevent="toggleFavorite(item)" href="">
+                <i class="bi bi-heart-fill" v-if="userFavorite.includes(item.id)"></i>
+                <i class="bi bi-heart" v-else></i>
+              </a>
+              <div class="card-detail pt-4" v-if="item.stock > 0">
+                <router-link :to="`/product/${item.id}`" class="card-linkstyle">
+                  詳細<span class="d-xl-inline-flex d-none">商品</span>資訊
+                  <i class="bi bi-arrow-right"></i>
+                </router-link>
+              </div>
+              <div class="card-soldout" v-if="item.stock <= 0 || item.stock === ''">
+                <h5 class="card-soldouttag">SOLD OUT</h5>
+              </div>
+            </div>
+            <div class="card-info">
+              <h6 class="card-title text-nowrap">{{ item.title }}</h6>
+              <p class="card-pricetag">NT$ {{ item.price }}
+                <span class="card-orgprice ml-2"
+                  v-if="item.price !== item.origin_price">$ {{ item.origin_price}}
+                </span>
+              </p>
+            </div>
+          </div>
+        </swiper-slide>
+      </template>
+    </Swiper>
+  </div>
 </template>
 
 <script>
 import emitter from '@/libs/emitter';
+import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue';
+import { Navigation } from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/modules/navigation/navigation.min.css';
 
 export default {
+  components: {
+    Swiper, SwiperSlide,
+  },
   data() {
     return {
       product: [],
+      relatedProducts: [],
+      currentImage: '',
       userFavorite: JSON.parse(localStorage.getItem('userFavorite')) || [],
       qty: 1,
+      modules: [Navigation],
     };
   },
   inject: ['emitter'],
@@ -158,7 +293,11 @@ export default {
       this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`).then((res) => {
         console.log('print if success');
         this.product = res.data.product;
+        this.currentImage = res.data.product.imageUrl;
       });
+    },
+    changeImage(url) {
+      this.currentImage = url;
     },
     toggleFavorite(product) {
       console.log(product);
@@ -197,6 +336,8 @@ export default {
           console.log(res);
         });
     },
+    getRelated() {
+    },
     addQty() {
       this.qty += 1;
     },
@@ -217,6 +358,7 @@ export default {
   },
   mounted() {
     this.getProduct();
+    this.getRelated();
   },
 };
 </script>

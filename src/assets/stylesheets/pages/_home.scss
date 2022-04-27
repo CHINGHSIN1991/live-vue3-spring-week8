@@ -5,6 +5,13 @@
   background-size: cover;
 }
 
+.home-mobile-cover{
+  height: 100vh;
+  background-image: url(./assets/images/kuanCover2.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
 .home-top-link{
   z-index: 20;
   position: fixed;
@@ -60,7 +67,6 @@
 }
 
 .home-section-content{
-  position: absolute;
   top: -24px;
 }
 
@@ -111,8 +117,14 @@
 }
 
 .home-category-link:hover .home-category-title {
-  bottom: 50%;
+  bottom: 55%;
   opacity: 1;
+}
+
+.home-section-introduction {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 2;
 }
 
 .home-img1 {

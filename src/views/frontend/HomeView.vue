@@ -2,9 +2,15 @@
   <a href="#" class="home-top-link">
     <div class="home-back-top fs-2 text-white text-center"><i class="bi bi-arrow-bar-up"></i></div>
   </a>
+  <div class="home-mobile-cover d-md-none d-flex flex-column align-items-center">
+    <img
+        src="@/assets/images/kuanLOGObig.png"
+        alt=""
+        class="home-cover-img mt-5"
+      />
+  </div>
   <div class="container">
-    <div class="home-cover mx-5 d-flex flex-column align-items-center">
-      <div></div>
+    <div class="home-cover mx-5 d-md-flex flex-column align-items-center d-none">
       <img
         src="@/assets/images/kuanLOGObig.png"
         alt=""
@@ -20,8 +26,8 @@
       <div class="home-section1-line mx-3 p-2 fw-bold">╱宅配無距離</div>
     </div>
     <!-- section1 content -->
-    <div class="section m-5 pb-xl-0 border">
-      <div class="row pb-xl-5 my-xl-5 pb-sm-7 my-sm-7 pb-8 my-8 flex-xl-row-reverse">
+    <div class="section m-5">
+      <div class="row pb-xl-5 pt-4 my-xl-5 pb-3 my-3 flex-xl-row-reverse">
         <div class="home-section-img home-img1 col-xl-8 rounded-2">
           <div class="home-section-slogan home-section-slogan-right d-flex align-items-start">
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">安心的食材</div>
@@ -29,7 +35,7 @@
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">嚴格來源檢驗</div>
           </div>
         </div>
-        <div class="col-xl-4 px-0 mb-2">
+        <div class="col-xl-4 px-0">
           <div class="home-section-content d-flex flex-column align-items-center mb-4">
             <img src="@/assets/images/QualityInspection.png" alt=""
             class="home-section-icon d-none d-xl-block mx-3">
@@ -42,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="row py-xl-5 my-xl-5 py-sm-7 my-sm-7 py-8 my-8">
+      <div class="row py-xl-5 my-xl-5 py-3 my-3">
         <div class="home-section-img home-img2 col-xl-8 rounded-2">
           <div class="home-section-slogan home-section-slogan-left d-flex align-items-start">
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">安心的食材</div>
@@ -50,7 +56,7 @@
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">嚴格來源檢驗</div>
           </div>
         </div>
-        <div class="col-xl-4 px-0 mb-2">
+        <div class="col-xl-4 px-0">
           <div class="home-section-content d-flex flex-column align-items-center mb-4">
             <img src="@/assets/images/FreshProducts.png" alt=""
             class="home-section-icon d-none d-xl-block mx-3">
@@ -63,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="row pt-xl-5 mt-xl-5 pt-sm-7 mt-sm-7 pt-8 mt-8 flex-xl-row-reverse">
+      <div class="row pt-xl-5 mt-xl-5 pt-3 mt-3 flex-xl-row-reverse">
         <div class="home-section-img home-img3 col-xl-8 rounded-2">
           <div class="home-section-slogan home-section-slogan-right d-flex align-items-start">
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">安心的食材</div>
@@ -71,7 +77,7 @@
             <div class="home-section-line m-2 py-3 ps-2 rounded-2">嚴格來源檢驗</div>
           </div>
         </div>
-        <div class="col-xl-4 px-0 mb-2">
+        <div class="col-xl-4 px-0">
           <div class="home-section-content d-flex flex-column align-items-center">
             <img src="@/assets/images/FestivalProducts.png" alt=""
             class="home-section-icon d-none d-xl-block mx-3">
@@ -93,70 +99,65 @@
     </div>
     <!-- section2 content -->
     <div class="section mx-5 mt-2 pb-sm-1">
-      <div class="row">
-        <Swiper
-          class="px-4 mx-0"
-          :modules="modules"
-          navigation
-          :slides-per-view="1"
-          :space-between="16"
-          :breakpoints="{
-            '768': {
-              slidesPerView: 2,
-              spaceBetween: 8,
-            },
-            '992': {
-              slidesPerView: 3,
-              spaceBetween: 8,
-            },
-            '1200': {
-              slidesPerView: 4,
-              spaceBetween: 8,
-            },
-          }"
-        >
-          <template v-for="item in products" :key="item.id + 'card'">
-            <swiper-slide v-if="item.recommended">
-              <div class="card-item d-flex flex-column align-items-center">
-                <div class="card-upper">
-                  <img
-                    class="card-img"
-                    :src="item.imageUrl"
-                    :alt="item.title"
-                  />
-                  <p class="card-tag" v-if="item.price !== item.origin_price">
-                    ON SALE
-                  </p>
-                  <a class="card-favicon" @click.prevent="toggleFavorite(item)" href="">
-                    <i class="bi bi-heart-fill" v-if="userFavorite.includes(item.id)"></i>
-                    <i class="bi bi-heart" v-else></i>
-                  </a>
-                  <div class="card-detail pt-4" v-if="item.stock > 0">
-                    <router-link :to="`/product/${item.id}`" class="card-linkstyle">
-                      詳細<span class="d-xl-inline-flex d-none">商品</span>資訊
-                      <i class="bi bi-arrow-right"></i>
-                    </router-link>
-                  </div>
-                  <div class="card-soldout" v-if="item.stock <= 0 || item.stock === ''">
-                    <h5 class="card-soldouttag">SOLD OUT</h5>
-                  </div>
+      <Swiper
+        class="px-4 mx-0"
+        :modules="modules"
+        navigation
+        :slides-per-view="1"
+        :space-between="16"
+        :breakpoints="{
+          '768': {
+            slidesPerView: 2,
+            spaceBetween: 8,
+          },
+          '992': {
+            slidesPerView: 3,
+            spaceBetween: 8,
+          },
+          '1200': {
+            slidesPerView: 4,
+            spaceBetween: 8,
+          },
+        }"
+      >
+        <template v-for="item in products" :key="item.id + 'card'">
+          <swiper-slide v-if="item.recommended">
+            <div class="card-item d-flex flex-column align-items-center">
+              <div class="card-upper">
+                <img
+                  class="card-img"
+                  :src="item.imageUrl"
+                  :alt="item.title"
+                />
+                <p class="card-tag" v-if="item.price !== item.origin_price">
+                  ON SALE
+                </p>
+                <a class="card-favicon" @click.prevent="toggleFavorite(item)" href="">
+                  <i class="bi bi-heart-fill" v-if="userFavorite.includes(item.id)"></i>
+                  <i class="bi bi-heart" v-else></i>
+                </a>
+                <div class="card-detail pt-4" v-if="item.stock > 0">
+                  <router-link :to="`/product/${item.id}`" class="card-linkstyle">
+                    詳細<span class="d-xl-inline-flex d-none">商品</span>資訊
+                    <i class="bi bi-arrow-right"></i>
+                  </router-link>
                 </div>
-                <div class="card-info">
-                  <h6 class="card-title text-nowrap">{{ item.title }}</h6>
-                  <p class="card-pricetag">NT$ {{ item.price }}
-                    <span class="card-orgprice ml-2"
-                      v-if="item.price !== item.origin_price">$ {{ item.origin_price}}
-                    </span>
-                  </p>
+                <div class="card-soldout" v-if="item.stock <= 0 || item.stock === ''">
+                  <h5 class="card-soldouttag">SOLD OUT</h5>
                 </div>
               </div>
-            </swiper-slide>
-          </template>
-        </Swiper>
-        <!-- <a href="#" class="col-1 fs-3 mt-7 pt-7 border text-end">
-          <i class="bi bi-arrow-right-circle"></i>
-        </a> -->
-      </div>
+              <div class="card-info">
+                <h6 class="card-title text-nowrap">{{ item.title }}</h6>
+                <p class="card-pricetag">NT$ {{ item.price }}
+                  <span class="card-orgprice ml-2"
+                    v-if="item.price !== item.origin_price">$ {{ item.origin_price}}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </swiper-slide>
+        </template>
+      </Swiper>
     </div>
     <!-- section3 title -->
     <div class="section d-flex justify-content-center m-5">
@@ -219,17 +220,18 @@
     <!-- section4 title -->
     <div class="section d-flex justify-content-center m-5">
       <div class="home-section1-line mx-3 p-2 fw-bold">╱關於甜點寬</div>
-      <div class="home-section1-line mx-3 p-2 fw-bold">╱訂製蛋糕</div>
-      <div class="home-section1-line mx-3 p-2 fw-bold">╱優惠組合</div>
-      <div class="home-section1-line mx-3 p-2 fw-bold">╱季節商品</div>
+      <div class="home-section1-line mx-3 p-2 fw-bold">╱讓甜點陪伴</div>
     </div>
     <!-- section4 content -->
-    <div class="section d-flex justify-content-center mt-md-0 mt-sm-2 mt-7 mb-3">
-      <p>13435464</p>
-      <div class="home-section1-line mx-3 p-2">海軍服役的日子，</div>
-      <div class="home-section1-line mx-3 p-2">陰錯陽差下開始自學甜點。</div>
-      <div class="home-section1-line mx-3 p-2">分享給親朋友好友甜點時，</div>
-      <div class="home-section1-line mx-3 p-2">最喜歡當下充滿開心的表情。</div>
+    <div class="section d-flex justify-content-center mt-md-0 mt-sm-2 mb-3">
+      <p class="home-section-introduction mx-3">海軍服役的日子，<br>
+      陰錯陽差下開始自學甜點。<br>
+      分享給親朋友好友甜點時，<br>
+      最喜歡當下充滿開心的表情。<br>
+      為此也不斷開發適合台灣人口味的甜點，<br>
+      並尋找台灣小農的優質農產品，<br>
+      期許製作出更多美味多樣的甜點。<br>
+      也邀您一起用甜點治癒生活。</p>
     </div>
   </div>
 </template>

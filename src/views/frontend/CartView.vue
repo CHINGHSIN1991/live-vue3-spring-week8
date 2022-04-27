@@ -17,19 +17,19 @@
       <div class="col-xl-4">
         <div class="border border-dark rounded-3 p-4 mb-4">
           <h5 class="fw-bold text-center pb-4 border-bottom">訂單摘要</h5>
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center py-3">
             <p class="fw-bold">商品總計</p><p>NT$ {{ (total).toLocaleString('en-US') }}</p>
           </div>
-          <div class="d-flex justify-content-between align-items-center"
+          <div class="d-flex justify-content-between align-items-center pb-3"
           v-if="(total-final_total)>0">
             <p class="fw-bold">商品折抵</p><p class="text-danger">
               - NT$ {{ (Math.round(total-final_total)).toLocaleString('en-US') }}
             </p>
           </div>
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center pb-3">
             <p class="fw-bold">運費</p><p>NT$ {{ (delivery_charge).toLocaleString('en-US') }}</p>
           </div>
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center pb-3">
             <p class="fw-bold">使用優惠券</p>
             <p></p>
             <p v-if="coupon_applied !== '' && coupon_applied !== 'Org'">
@@ -64,7 +64,7 @@
             </select>
             <label for="form-floating">配送方式</label>
           </div>
-          <div class="d-flex justify-content-between mt-3 border-top pt-3">
+          <div class="d-flex justify-content-between mt-3 border-top py-3">
             <p class="fw-bold">結帳總金額</p><p class="fw-bold fs-5">
               NT$ {{ (Math.round(final_total+delivery_charge)).toLocaleString('en-US') }}
             </p>

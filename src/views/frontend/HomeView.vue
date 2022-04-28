@@ -12,7 +12,7 @@
       <div class="home-media-link my-2 fs-7 fw-bold text-center text-primary">
         讓甜點成為生活中的調劑<br>
         用新鮮手作甜點，傳遞幸福與愛<br>
-        減少化學添加，讓食物更貼近原本的樣貌
+        無化學添加，讓食物更貼近原本的樣貌
       </div>
       <hr>
       <ul class="mt-3 d-flex justify-content-xl-start justify-content-center">
@@ -112,7 +112,7 @@
           <div class="home-section-content d-flex flex-column align-items-center mb-4">
             <img src="@/assets/images/QualityInspection.png" alt=""
             class="home-section-icon d-none d-xl-block mx-3">
-            <h5 class="mt-xl-3 mt-5 fw-bold">安心食材宣言</h5>
+            <h5 class="mt-xl-3 mt-5 fw-bold pb-xl-0 pb-2">安心食材宣言</h5>
             <p class="mt-xl-3 mx-xl-5 mx-3">
               甜點寬所使用的所有食材皆為精選頂級天然的食材搭配。
               我們相信只有使用最好的原料，才能製作出最美味的甜點。
@@ -133,7 +133,7 @@
           <div class="home-section-content d-flex flex-column align-items-center mb-4">
             <img src="@/assets/images/FreshProducts.png" alt=""
             class="home-section-icon d-none d-xl-block mx-3">
-            <h5 class="mt-xl-3 mt-5 fw-bold">下單後新鮮製作</h5>
+            <h5 class="mt-xl-3 mt-5 fw-bold pb-xl-0 pb-2">下單後新鮮製作</h5>
             <p class="mt-xl-3 mx-xl-5 mx-3">
               為了保證商品的新鮮及美味，您訂購的商品將在您下單後開始製作，因此無法接受緊急的臨時訂單。
               若有修改訂單需求請於兩天前通知，以確保您享用甜點的體驗。
@@ -154,7 +154,7 @@
           <div class="home-section-content d-flex flex-column align-items-center">
             <img src="@/assets/images/FestivalProducts.png" alt=""
             class="home-section-icon d-none d-xl-block mx-3">
-            <h5 class="mt-xl-3 mt-5 fw-bold">節慶客製甜點</h5>
+            <h5 class="mt-xl-3 mt-5 fw-bold pb-xl-0 pb-2">節慶客製甜點</h5>
             <p class="mt-xl-3 mx-xl-5 mx-3">
               無論是重要季節還是重要的日子，告訴我們你的需求，我們會為您客製專屬於你的美味甜點。
               除了符合不同需求調整食材和設計的鮮奶油蛋糕外，情人節、聖誕節、新年等等節日，

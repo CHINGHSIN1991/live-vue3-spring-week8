@@ -8,15 +8,88 @@
         alt=""
         class="home-cover-img mt-5"
       />
+    <div class="mt-5">
+      <div class="home-media-link my-2 fs-7 fw-bold text-center text-primary">
+        讓甜點成為生活中的調劑<br>
+        用新鮮手作甜點，傳遞幸福與愛<br>
+        減少化學添加，讓食物更貼近原本的樣貌
+      </div>
+      <hr>
+      <ul class="mt-3 d-flex justify-content-xl-start justify-content-center">
+        <li class="py-1 pe-3">
+          <div class="rounded-circle
+          home-icon d-flex justify-content-center align-items-center">
+            <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-line"></i></a>
+          </div>
+        </li>
+        <li class="py-1 pe-3">
+          <div class="rounded-circle
+          home-icon d-flex justify-content-center align-items-center">
+            <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-behance"></i></a>
+          </div>
+        </li>
+        <li class="py-1 pe-3">
+          <div class="rounded-circle
+          home-icon d-flex justify-content-center align-items-center">
+            <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-instagram"></i></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="d-md-flex flex-column align-items-center d-none">
+    <img
+    src="@/assets/images/kuanLOGObig.png"
+    alt=""
+    class="home-cover-img my-5"
+    />
+    <div class="home-cover d-md-flex flex-column align-items-center d-none">
+      <div class="home-media">
+        <div class="home-media-link my-2 fs-4 fw-bold">
+          讓甜點成為生活中的調劑
+        </div>
+        <div class="home-media-link my-2 fs-4 fw-bold">
+          用新鮮手作甜點，傳遞幸福與愛
+        </div>
+        <div class="home-media-link my-2 fs-4 fw-bold">
+          減少化學添加，讓食物更貼近原本的樣貌
+        </div>
+        <hr>
+        <div class="footer-information-box d-flex flex-column pt-2 fw-bold fs-8">
+          <div class="py-1">
+            <i class="bi bi-phone-vibrate pe-2"></i>電話 ｜ 0912345678
+          </div>
+          <div class="py-1">
+            <i class="bi bi-mailbox pe-2"></i>信箱 ｜ chinghsinchen1991@gmail.com
+          </div>
+          <div class="py-1">
+            <i class="bi bi-shop pe-2"></i>地址 ｜ 台北市中正區北平西路3號
+          </div>
+        </div>
+        <ul class="mt-3 d-flex justify-content-xl-start justify-content-center">
+          <li class="py-1 pe-3">
+            <div class="rounded-circle
+            home-icon d-flex justify-content-center align-items-center">
+              <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-line"></i></a>
+            </div>
+          </li>
+          <li class="py-1 pe-3">
+            <div class="rounded-circle
+            home-icon d-flex justify-content-center align-items-center">
+              <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-behance"></i></a>
+            </div>
+          </li>
+          <li class="py-1 pe-3">
+            <div class="rounded-circle
+            home-icon d-flex justify-content-center align-items-center">
+              <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-instagram"></i></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
   <div class="container">
-    <div class="home-cover mx-5 d-md-flex flex-column align-items-center d-none">
-      <img
-        src="@/assets/images/kuanLOGObig.png"
-        alt=""
-        class="home-cover-img mt-5"
-      />
-    </div>
     <!-- section1 title -->
     <div class="section d-flex justify-content-center m-5">
       <div class="home-section1-line mx-3 p-2 fw-bold">╱嚴選的食材</div>

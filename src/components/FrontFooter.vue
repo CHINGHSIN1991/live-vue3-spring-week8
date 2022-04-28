@@ -70,7 +70,7 @@
                 </li>
                 <li class="py-1">
                   <router-link to="/products"
-                  class="footer-text-link px-2 py-1 rounded-3">訂購須知</router-link>
+                  class="footer-text-link px-2 py-1 rounded-3">訂單查詢</router-link>
                 </li>
                 <li class="py-1">
                   <router-link to="/products"

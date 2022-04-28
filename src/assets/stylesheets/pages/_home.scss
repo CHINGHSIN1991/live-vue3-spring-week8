@@ -1,5 +1,7 @@
 .home-cover{
-  height: 90vh;
+  height: 80vh;
+  margin-right: calc(33% + 3rem);
+  width: calc(67% - 3rem);;
   background-image: url(./assets/images/kuanCover.jpg);
   background-position: center;
   background-size: cover;
@@ -12,11 +14,39 @@
   background-size: cover;
 }
 
+.home-media{
+  position: absolute;
+  right: -360px;
+  bottom: 25%;
+}
+
+.home-icon{
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(40, 40, 40);
+  transition-duration: 0.3s;
+  color: $warning;
+  cursor: pointer;
+}
+
 .home-top-link{
   z-index: 20;
   position: fixed;
   right: 30px;
   bottom: 30px;
+}
+
+.home-icon-link{
+  transition-duration: 0.3s;
+  color: $background;
+}
+
+.home-icon:hover{
+  background-color: rgb(89, 70, 70);
+}
+
+.home-icon:hover .home-icon-link{
+  color: white;
 }
 
 .home-back-top{
@@ -32,6 +62,8 @@
 }
 
 .home-cover-img{
+  left: auto;
+  right: auto;
   width: 240px;
   object-fit: cover;
 }

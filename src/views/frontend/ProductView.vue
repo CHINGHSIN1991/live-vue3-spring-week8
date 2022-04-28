@@ -164,42 +164,10 @@
     </div>
   </div>
   <div class="container mt-6 px-4">
-    <ul class="nav nav-tabs nav-justified"
-    id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link fw-bold active" id="home-tab" data-bs-toggle="tab"
-        data-bs-target="#home" type="button" role="tab"
-        aria-controls="home" aria-selected="true">寄送方式</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link fw-bold" id="profile-tab" data-bs-toggle="tab"
-        data-bs-target="#profile" type="button" role="tab"
-        aria-controls="profile" aria-selected="false">注意事項</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link  fw-bold" id="contact-tab" data-bs-toggle="tab"
-        data-bs-target="#contact" type="button" role="tab"
-        aria-controls="contact" aria-selected="false">保存方式</button>
-      </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home"
-      role="tabpanel" aria-labelledby="home-tab">1. 親取地點：本工作室（桃園市政府附近）。<br>
-        2. 寄送需自行負擔160元運費，皆為「冷藏黑貓宅配到府」。<br>
-        （註：寄送地址若為同一地點，不管你買多少盒，只酌收一次運費。）<br>
-        3. 寄送會用硬膜圍邊包覆蛋糕本體，但物流運送過程中難免會有些碰撞，有時候會造成小凹痕，若非常在意外觀，不建議訂購。</div>
-      <div class="tab-pane fade" id="profile"
-      role="tabpanel" aria-labelledby="profile-tab">1. 生乳酪為葷食，並含有奶製品、若有食品過敏，不建議食用。<br>
-        2. 鮮奶油蛋糕為蛋奶素，並含有奶製品、茶葉、若有食品過敏，不建議食用。<br>
-        3. 若需要加購：叉盤組一組六個10元、塑膠蛋糕刀一把為5元。</div>
-      <div class="tab-pane fade" id="contact"
-      role="tabpanel" aria-labelledby="contact-tab">1. 生乳酪冷藏保存最多3~5天(寄送者為收貨後3天內)、勿冷凍！<br>
-        2. 鮮奶油蛋糕冷藏保存最多3天，勿冷凍！<br>
-        3. 兩款甜點都建議盡快食用，冷藏口感、味道較佳。<br>
-        4. 勿在室溫下超過一小時半以上，以免奶製品變質，。</div>
-    </div>
+    <ProductNotes :category="nowCategory"></ProductNotes>
   </div>
-  <div class="container mt-6">
+  <div class="container my-6">
+    <h4 class="text-center fs-4 my-4">你可能也會喜歡</h4>
     <Swiper
       class="px-4 mx-0"
       :modules="modules"
@@ -221,7 +189,7 @@
         },
       }"
     >
-      <template v-for="item in Product" :key="item.id + 'card'">
+      <template v-for="item in products" :key="item.id + 'card'">
         <swiper-slide>
           <div class="card-item d-flex flex-column align-items-center">
             <div class="card-upper">
@@ -264,17 +232,22 @@
 
 <script>
 import emitter from '@/libs/emitter';
+
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue';
 import { Navigation } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.min.css';
 
+import ProductNotes from '@/components/ProductNotes.vue';
+
 export default {
   components: {
-    Swiper, SwiperSlide,
+    Swiper, SwiperSlide, ProductNotes,
   },
   data() {
     return {
+      products: [],
+      nowCategory: '',
       product: [],
       relatedProducts: [],
       currentImage: '',
@@ -285,15 +258,29 @@ export default {
   },
   inject: ['emitter'],
   methods: {
+    getProducts(category) {
+      this.inFavoritePage = false;
+      if (category) {
+        this.$http(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?category=${category}`).then((res) => {
+          this.products = res.data.products;
+          this.nowCategory = category;
+        });
+      } else {
+        this.$http(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`).then((res) => {
+          this.products = res.data.products;
+          this.nowCategory = '';
+        });
+      }
+      console.log('nowCategory', this.nowCategory);
+    },
     getProduct() {
       console.log(this.$route);
-      console.log('getProduct');
       console.log(this.$route.params);
       const { id } = this.$route.params;
       this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`).then((res) => {
-        console.log('print if success');
         this.product = res.data.product;
         this.currentImage = res.data.product.imageUrl;
+        this.nowCategory = res.data.product.category;
       });
     },
     changeImage(url) {
@@ -337,6 +324,7 @@ export default {
         });
     },
     getRelated() {
+      console.log('getRelated');
     },
     addQty() {
       this.qty += 1;
@@ -358,6 +346,7 @@ export default {
   },
   mounted() {
     this.getProduct();
+    this.getProducts(this.$route.query.category);
     this.getRelated();
   },
 };

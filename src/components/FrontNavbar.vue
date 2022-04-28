@@ -2,13 +2,12 @@
   <div class="offcanvas offcanvas-end" tabindex="-1"
   id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">我的購物車</h5>
+      <h5 id="offcanvasRightLabel" class="fw-bold fs-5"><i class="bi bi-cart3 mx-3"></i>我的購物車</h5>
       <button type="button" class="btn-close text-reset"
       data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <div class="container">
-        <h5 class="fw-bold text-center pb-4 border-bottom">訂單細項</h5>
         <ul>
           <li v-for="item in cart"
           class="row my-4 d-flex align-items-center justify-content-between" :key="item.id">
@@ -58,6 +57,11 @@
             </div>
           </li>
         </ul>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center py-2">
+          <p class="fw-bold">商品總計</p>
+          <p class="fw-bold">NT$ {{ (total).toLocaleString('en-US') }}</p>
+        </div>
         <router-link type="button" class="mt-3 w-100 btn btn-outline-secondary"
           :to="`/cart`">
           <div data-bs-dismiss="offcanvas">
@@ -169,6 +173,42 @@ export default {
     //       this.cart = res.data.data;
     //     });
     // },
+    qtyEdit(operator, id, item) {
+      let tempqty = 0;
+      if (operator === 'add') {
+        tempqty = item.qty + 1;
+      } else {
+        tempqty = item.qty - 1;
+      }
+      const data = {
+        product_id: item.product_id,
+        qty: tempqty,
+      };
+      console.log(data);
+      this.$http.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`, { data }).then((res) => {
+        console.log('editItem', res);
+        this.getCart();
+      }).catch((err) => {
+        console.log(err);
+      });
+    },
+    delItem(id) {
+      console.log(id);
+      this.$http.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`).then((res) => {
+        console.log('delItem', res);
+        this.getCart();
+      }).catch((err) => {
+        console.log(err);
+      });
+    },
+    delCarts() {
+      this.$http.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`).then((res) => {
+        console.log('delItems', res);
+        this.getCart();
+      }).catch((err) => {
+        console.log(err);
+      });
+    },
   },
   mounted() {
     this.getCart();

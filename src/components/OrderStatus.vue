@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 d-flex justify-content-between mx-md-5 px-md-5 text-secondary">
+  <div class="p-4 d-flex justify-content-between mx-md-5 px-md-5 my-3 text-secondary">
     <div class="d-flex flex-column align-items-center">
       <div class="cart-icon text-center fs-5 pt-1
       border border-secondary

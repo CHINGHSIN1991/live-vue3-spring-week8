@@ -24,7 +24,9 @@
       </div>
     </div>
     <div class="card-info">
-      <h6 class="card-title">{{ product.title }}</h6>
+      <h6 class="card-title">
+        <i v-if="product.recommended" class="bi bi-hand-thumbs-up-fill me-1"></i>{{ product.title }}
+      </h6>
       <p class="card-pricetag">NT$ {{ product.price }}
         <span class="card-orgprice ml-2"
           v-if="product.price !== product.origin_price">$ {{ product.origin_price}}

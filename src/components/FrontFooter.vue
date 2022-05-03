@@ -34,27 +34,27 @@
               <div class="footer-bottom-line d-none d-xl-block"></div>
               <ul class="row mt-3 fs-8">
                 <li class="col-6 col-xl-12 py-1">
-                  <router-link to="/products"
+                  <router-link to="/"
                   class="footer-text-link px-2 py-1 rounded-3">關於我們</router-link>
                 </li>
                 <li class="col-6 col-xl-12 py-1">
-                  <router-link to="/products"
+                  <router-link to="/"
                   class="footer-text-link px-2 py-1 rounded-3">品牌故事</router-link>
                 </li>
                 <li class="col-6 col-xl-12 py-1">
-                  <router-link to="/products"
+                  <router-link to="/"
                   class="footer-text-link px-2 py-1 rounded-3">優惠活動</router-link>
                 </li>
                 <li class="col-6 col-xl-12 py-1">
-                  <router-link to="/products"
+                  <router-link to="/"
                   class="footer-text-link px-2 py-1 rounded-3">最新訊息</router-link>
                 </li>
                 <li class="col-6 col-xl-12 py-1">
-                  <router-link to="/products"
+                  <router-link to="/"
                   class="footer-text-link px-2 py-1 rounded-3">服務條款</router-link>
                 </li>
                 <li class="col-6 col-xl-12 py-1">
-                  <router-link to="/products"
+                  <router-link to="/"
                   class="footer-text-link px-2 py-1 rounded-3">常見問題</router-link>
                 </li>
               </ul>

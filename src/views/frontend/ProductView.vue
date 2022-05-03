@@ -77,17 +77,42 @@
       <div class="col-1 d-md-block d-none"></div>
       <div class="col-md-5 px-md-0 px-4">
         <div class="menu-chain d-flex text-center mb-4">
-          <router-link to="/products" class="menu-listitem">
+          <a href="#" @click.prevent="goToCategory()" class="home-category-link">
             全部商品
-          </router-link>
+          </a>
           <span class="mx-3">></span>
-          <router-link to="/products">{{ product.category }}</router-link>
+          <a href="#" @click.prevent="goToCategory(product.category)" class="home-category-link">
+            {{ product.category }}
+          </a>
         </div>
         <h1 class="mb-3 fs-3 fw-bold">{{ product.title }}</h1>
-        <h2 class="mb-3 fs-4">
+        <div class="d-flex mb-3">
+          <div v-if="product.refrigeration"
+          class="px-3 py-1 me-3
+          border border-info border-2
+          d-inline-block rounded-pill text-info
+          fs-8 fw-bold">
+            <i class="bi bi-snow3 me-1"></i>產品需冷藏
+          </div>
+          <div v-else
+          class="px-3 py-1 me-3
+          border border-success border-2
+          d-inline-block rounded-pill text-success
+          fs-8 fw-bold">
+            <i class="bi bi-thermometer-half me-1"></i>常溫商品
+          </div>
+          <div v-if="product.pick_in_person"
+          class="px-3 py-1 me-3
+          border border-danger border-2
+          d-inline-block rounded-pill text-danger
+          fs-8 fw-bold">
+            <i class="bi bi-shop me-1"></i>商品限店取
+          </div>
+        </div>
+        <h4 class="mb-3 fs-4">
           NT$ {{ product.price }} <span class="fs-6">/ {{ product.unit }}</span>
           <!-- (product.price).toLocaleString('en-US') -->
-        </h2>
+        </h4>
         <hr>
         <p class="pt-3 mb-3">商品規格 ： {{ product.product_content }}</p>
         <div class="mb-3 d-flex align-items-start">
@@ -190,7 +215,7 @@
       }"
     >
       <template v-for="item in products" :key="item.id + 'card'">
-        <swiper-slide>
+        <swiper-slide v-if="(item.category === nowCategory || item.recommended) && item.stock > 0">
           <div class="card-item d-flex flex-column align-items-center">
             <div class="card-upper">
               <img
@@ -216,7 +241,10 @@
               </div>
             </div>
             <div class="card-info">
-              <h6 class="card-title text-nowrap">{{ item.title }}</h6>
+              <h6 class="card-title text-nowrap">
+                <i v-if="item.recommended" class="bi bi-hand-thumbs-up-fill me-1"></i>
+                {{ item.title }}
+              </h6>
               <p class="card-pricetag">NT$ {{ item.price }}
                 <span class="card-orgprice ml-2"
                   v-if="item.price !== item.origin_price">$ {{ item.origin_price}}
@@ -309,6 +337,9 @@ export default {
         console.log('have to remove', product.id);
       }
       console.log(this.userFavorite);
+    },
+    goToCategory(category) {
+      this.$router.push({ path: '/products', query: { category } });
     },
     addToCart(id) {
       const data = {

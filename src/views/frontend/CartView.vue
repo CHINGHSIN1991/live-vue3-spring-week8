@@ -1,5 +1,4 @@
 <template>
-  <h2>購物車</h2>
   <div class="container">
     <OrderStatus :nowStatus="nowStatus"></OrderStatus>
     <div
@@ -15,7 +14,7 @@
     </div>
     <div class="row d-flex flex-row-reverse" v-if="cart.length > 0">
       <div class="col-xl-4">
-        <div class="border border-dark rounded-3 p-4 mb-4">
+        <Form v-slot="{ errors }" class="border border-dark rounded-3 p-4 mb-4">
           <h5 class="fw-bold text-center pb-4 border-bottom">訂單摘要</h5>
           <div class="d-flex justify-content-between align-items-center py-3">
             <p class="fw-bold">商品總計</p><p>NT$ {{ (total).toLocaleString('en-US') }}</p>
@@ -53,16 +52,21 @@
             </div>
           </div>
           <div class="form-floating">
-            <select  id="delivery_way"
-            class="form-select mb-2" aria-label="select example" v-model="delivery_way">
-              <option selected value="" disabled>請選擇配送方式</option>
+            <Field name="配送方式" as="select"
+            placeholder="請選擇配送方式"
+            class="form-select mb-2"
+            id="delivery_way"
+            rules="required"
+            v-model="delivery_way"
+            :class="{ 'is-invalid': errors['配送方式'] }">
               <option value="0來店自取">來店自取</option>
               <option value="60常溫配送">常溫配送</option>
               <option value="80常溫超商取貨">常溫超商取貨</option>
               <option value="220低溫配送">低溫配送</option>
               <option value="240冷凍超商取貨">冷凍超商取貨</option>
-            </select>
+            </Field>
             <label for="form-floating">配送方式</label>
+            <ErrorMessage name="配送方式" class="invalid-feedback" />
           </div>
           <div class="d-flex justify-content-between mt-3 border-top py-3">
             <p class="fw-bold">結帳總金額</p><p class="fw-bold fs-5">
@@ -74,11 +78,36 @@
               前往結帳<i class="bi bi-arrow-right"></i>
             </button>
           </router-link>
-        </div>
+        </Form>
       </div>
       <div class="col-xl-8">
         <div class="cartlist border border-dark rounded-3 p-4 mb-4">
           <h5 class="fw-bold text-center pb-4 border-bottom">訂單細項</h5>
+          <div class="row fs-8 py-2 mx-0 border-bottom">
+            <div class="col-2 text-start ps-3">
+              <span class="d-md-inline-block d-none">商品</span>圖片
+            </div>
+            <div class="col-md-6 col-7 row">
+              <div class="col-lg-5 text-start ps-sm-5d-sm-flex d-none">商品名稱</div>
+              <div class="col-lg-7 text-start ps-sm-5 ps-4">
+                <span class="text-nowrap">
+                  單價
+                </span>
+                <span class="mx-lg-4 mx-2">×</span>
+                <span>
+                  <div class="text-nowrap d-inline-flex">
+                    數量
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-2 d-md-flex d-none justify-content-end pe-md-3">
+              小計
+            </div>
+            <div class="col-md-2 col-3 d-flex justify-content-end px-md-2 px-0">
+              訂單修改
+            </div>
+          </div>
           <ul>
             <li v-for="item in cart"
             class="row my-3 d-flex align-items-center justify-content-between" :key="item.id">
@@ -103,6 +132,8 @@
                     </div>
                   </span>
                 </div>
+                <p v-if="item.qty <= 1"
+                  class="text-secondary fs-8 m-0 p-0 fw-bold">＊商品訂購數量最低為1{{item.product.unit}}</p>
                 <p v-if="item.qty >= item.product.stock"
                   class="text-danger fs-8 m-0 p-0 fw-bold">＊商品已達庫存上限</p>
               </div>
@@ -130,7 +161,8 @@
                 </button>
                 <button
                   class="cart_btn ms-md-2 mx-1 me-md-1"
-                  @click="delItem(item.id)">
+                  @click="openDelProductModal(item)"
+                >
                   <i class="bi bi-trash3"></i>
                 </button>
               </div>
@@ -186,10 +218,12 @@
       </div>
     </div>
   </div>
+  <DelModal :item="tempProduct" ref="delModal" @del-item="delItem(tempProduct.id)"/>
 </template>
 
 <script>
 import emitter from '@/libs/emitter';
+import DelModal from '@/components/DelModal.vue';
 import OrderStatus from '@/components/OrderStatus.vue';
 
 export default {
@@ -197,6 +231,9 @@ export default {
     return {
       products: [],
       cart: [],
+      tempProduct: {
+        imagesUrl: [],
+      },
       total: 0,
       final_total: 0,
       nowStatus: '購物清單',
@@ -208,7 +245,7 @@ export default {
     };
   },
   components: {
-    OrderStatus,
+    OrderStatus, DelModal,
   },
   methods: {
     getProducts() {
@@ -251,10 +288,17 @@ export default {
           emitter.emit('get-cart');
         });
     },
+    openDelProductModal(item) {
+      this.tempProduct = { ...item };
+      const delComponent = this.$refs.delModal;
+      delComponent.openModal();
+    },
     delItem(id) {
       console.log(id);
       this.$http.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`).then((res) => {
         console.log('delItem', res);
+        const delComponent = this.$refs.delModal;
+        delComponent.hideModal();
         this.getCart();
       }).catch((err) => {
         console.log(err);

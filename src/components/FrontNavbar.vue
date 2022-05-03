@@ -68,8 +68,6 @@
             前往結帳<i class="mx-2 bi bi-cart-plus"></i>
           </div>
         </router-link>
-        <button type="button" class="mt-2 w-100 btn btn-outline-secondary"
-          @click.prevent="delCarts">清空購物車<i class="mx-2 bi bi-cart-x"></i></button>
         <router-link type="button" class="mt-2 w-100 btn btn-outline-secondary"
           :to="`/products`">
           <div data-bs-dismiss="offcanvas">
@@ -106,17 +104,17 @@
               <router-link class="nav-link" to="/">關於我們</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/products">產品連結</router-link>
+              <router-link class="nav-link" to="/products">甜點商店</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/cart">購物車</router-link>
             </li>
           </ul>
         </div>
-        <button class="btn rounded-circle" to="/login">
+        <button class="btn rounded-circle d-xl-block d-none" to="/login">
           <i class="bi bi-heart"></i>
         </button>
-        <button class="btn rounded-circle"
+        <button class="btn rounded-circle d-xl-block d-none"
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight">
           <i class="bi bi-cart3"></i>
@@ -125,7 +123,7 @@
             {{cart?.length}}
           </span>
         </button>
-        <router-link class="nav-link" to="/login">
+        <router-link class="nav-link d-xl-block d-none" to="/login">
           <i class="bi bi-gear"></i>
         </router-link>
       </div>

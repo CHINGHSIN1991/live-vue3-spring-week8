@@ -16,19 +16,19 @@
       </div>
       <hr>
       <ul class="mt-3 d-flex justify-content-xl-start justify-content-center">
-        <li class="py-1 pe-3">
+        <li class="py-1 px-2">
           <div class="rounded-circle
           home-icon d-flex justify-content-center align-items-center">
             <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-line"></i></a>
           </div>
         </li>
-        <li class="py-1 pe-3">
+        <li class="py-1 px-2">
           <div class="rounded-circle
           home-icon d-flex justify-content-center align-items-center">
             <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-behance"></i></a>
           </div>
         </li>
-        <li class="py-1 pe-3">
+        <li class="py-1 px-2">
           <div class="rounded-circle
           home-icon d-flex justify-content-center align-items-center">
             <a class="home-icon-link" href="https://www.behance.net/chinghsin1991" target="_blank"><i class="bi bi-instagram"></i></a>
@@ -52,7 +52,7 @@
           用新鮮手作甜點，傳遞幸福與愛
         </div>
         <div class="home-media-link my-2 fs-4 fw-bold">
-          減少化學添加，讓食物更貼近原本的樣貌
+          無化學添加，讓食物更貼近原本的樣貌
         </div>
         <hr>
         <div class="footer-information-box d-flex flex-column pt-2 fw-bold fs-8">
@@ -171,7 +171,7 @@
       <div class="home-section1-line mx-3 p-2 fw-bold">╱生活點綴</div>
     </div>
     <!-- section2 content -->
-    <div class="section mx-5 mt-2 pb-sm-1">
+    <div class="section mx-sm-5 mx-2 mt-2 pb-sm-1">
       <Swiper
         class="px-4 mx-0"
         :modules="modules"
@@ -220,7 +220,10 @@
                 </div>
               </div>
               <div class="card-info">
-                <h6 class="card-title text-nowrap">{{ item.title }}</h6>
+                <h6 class="card-title text-nowrap">
+                  <i v-if="item.recommended" class="bi bi-hand-thumbs-up-fill me-1"></i>
+                  {{ item.title }}
+                </h6>
                 <p class="card-pricetag">NT$ {{ item.price }}
                   <span class="card-orgprice ml-2"
                     v-if="item.price !== item.origin_price">$ {{ item.origin_price}}

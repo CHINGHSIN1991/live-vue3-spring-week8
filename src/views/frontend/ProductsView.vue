@@ -1,6 +1,5 @@
 <template>
-  <h2>產品列表</h2>
-  <div class="container">
+  <div class="container mt-5">
     <div class="row mb-5">
       <div class="col-md-2 mt-3">
         <ProductsMenu :nowCategory="nowCategory"
@@ -110,6 +109,11 @@ export default {
       },
       deep: true,
     },
+    // nowCategory: {
+    //   handler() {
+    //     this.getProducts(this.nowCategory);
+    //   },
+    // },
   },
   mounted() {
     this.getProducts(this.$route.query.category);

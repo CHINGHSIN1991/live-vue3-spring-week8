@@ -100,10 +100,17 @@
       <div class="col-xl-5 mb-4">
         <div class="cartlist border border-dark rounded-3 p-4">
           <h5 class="fw-bold text-center pb-4 border-bottom">訂單細項</h5>
+          <div class="row fs-8 py-2 mx-0 border-bottom">
+            <div class="col-2 text-start ps-2">商品圖片</div>
+            <div class="col-10 row">
+              <div class="col-8 text-start ps-5">產品及訂購數量</div>
+              <div class="col-4 text-end pe-1">小計</div>
+            </div>
+          </div>
           <ul>
             <li
               v-for="item in cart"
-              class="row my-4 d-flex align-items-end justify-content-between"
+              class="row my-4 d-flex align-items-center justify-content-between"
               :key="item.id"
             >
               <div class="col-2 px-md-2 p-0 cart-img">
@@ -113,51 +120,53 @@
                   :alt="item.product.title"
                 />
               </div>
-              <div class="col-7 row">
-                <h6 class="px-1 text-start cart-litext">
-                  {{ item.product.title }}
-                </h6>
-                <div
-                  class="
-                    px-1
-                    text-start
-                    d-flex
-                    justify-content-start
-                    cart-litext
-                  "
-                >
-                  <span class="text-nowrap">
-                    NT$ {{ item.product.price.toLocaleString("en-US") }}
-                  </span>
-                  <span class="mx-lg-4 mx-2">×</span>
-                  <span>
-                    <div
-                      class="
-                        text-nowrap
-                        cart_qty
-                        d-inline-flex
-                        justify-content-center
-                      "
-                    >
-                      {{ item.qty + item.product.unit }}
-                    </div>
+              <div class="col-10 row d-flex align-items-end justify-content-between">
+                <div class="col-8 row px-sm-2 px-0">
+                  <h6 class="px-1 text-start cart-litext">
+                    {{ item.product.title }}
+                  </h6>
+                  <div
+                    class="
+                      px-1
+                      text-start
+                      d-flex
+                      justify-content-start
+                      cart-litext
+                    "
+                  >
+                    <span class="text-nowrap">
+                      NT$ {{ item.product.price.toLocaleString("en-US") }}
+                    </span>
+                    <span class="mx-lg-4 mx-2">×</span>
+                    <span>
+                      <div
+                        class="
+                          text-nowrap
+                          cart_qty
+                          d-inline-flex
+                          justify-content-center
+                        "
+                      >
+                        {{ item.qty + item.product.unit }}
+                      </div>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <span class="text-end"
+                    >NT$ {{ item.total.toLocaleString("en-US") }}
                   </span>
                 </div>
               </div>
-              <div class="col-3 text-end px-sm-2 px-0">
-                <span class="text-end"
-                  >NT$ {{ item.total.toLocaleString("en-US") }}</span
-                >
-              </div>
             </li>
           </ul>
-          <div class="info pt-4 border-top">
-            <div class="d-flex justify-content-between align-items-center">
+          <div class="info border-top">
+            <div class="d-flex justify-content-between align-items-center py-3">
               <p class="fw-bold">商品總計</p>
               <p>NT$ {{ total.toLocaleString("en-US") }}</p>
             </div>
             <div
-              class="d-flex justify-content-between align-items-center"
+              class="d-flex justify-content-between align-items-center pb-3"
               v-if="total - final_total > 0"
             >
               <p class="fw-bold">商品折抵</p>
@@ -166,12 +175,12 @@
                 {{ Math.round(total - final_total).toLocaleString("en-US") }}
               </p>
             </div>
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center pb-3">
               <p class="fw-bold">運費</p>
               <p>NT$ {{ delivery_charge.toLocaleString("en-US") }}</p>
             </div>
           </div>
-          <div class="d-flex justify-content-between mt-3 border-top pt-3">
+          <div class="d-flex justify-content-between border-top py-3">
             <p class="fw-bold">結帳總金額</p>
             <p class="fw-bold fs-5">
               NT$
